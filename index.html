@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Salt_Pan_Monitoring</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.26/"></script>
+
+  <script>
+    require([
+        "esri/WebMap",
+        "esri/views/MapView",
+        "esri/widgets/Editor",
+      "esri/widgets/Legend"
+      ], (
+        WebMap, MapView,
+        Editor,Legend
+      ) => {
+        const webmap = new WebMap({
+          portalItem: {
+            id: "3ff9cb7a76b449659309320458327414"
+          }
+        });
+ const view = new MapView({
+          container: "viewDiv",
+          map: webmap
+        });
+const editor = new Editor({
+         container:"editorDiv",
+          view: view
+        });
+        // Add widget 
+        view.ui.add(editor, "top-right");
+      
+      
+      const legend = new Legend({
+  view: view,
+  style: "card" // other styles include 'classic'
+});
+view.ui.add(legend, "bottom-left");
+
+      });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <div id='editorDiv'></div>
+  
+</body>
+
+</html>
